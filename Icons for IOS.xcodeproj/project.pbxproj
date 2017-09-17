@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		1036BA2BCE934D3A33F67DA7 /* Pods_resizingImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_resizingImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2922EEBC1F6B1461002E2EC1 /* resizingImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = resizingImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2922EEBC1F6B1461002E2EC1 /* Icons for IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Icons for IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2922EEBF1F6B1461002E2EC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2922EEC11F6B1461002E2EC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2922EEC41F6B1461002E2EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		2922EEBD1F6B1461002E2EC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2922EEBC1F6B1461002E2EC1 /* resizingImages.app */,
+				2922EEBC1F6B1461002E2EC1 /* Icons for IOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2922EEBB1F6B1461002E2EC1 /* resizingImages */ = {
+		2922EEBB1F6B1461002E2EC1 /* Icons for IOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2922EECE1F6B1461002E2EC1 /* Build configuration list for PBXNativeTarget "resizingImages" */;
+			buildConfigurationList = 2922EECE1F6B1461002E2EC1 /* Build configuration list for PBXNativeTarget "Icons for IOS" */;
 			buildPhases = (
 				5B0406449F10802DEAC600B5 /* [CP] Check Pods Manifest.lock */,
 				2922EEB81F6B1461002E2EC1 /* Sources */,
@@ -107,9 +107,9 @@
 			);
 			dependencies = (
 			);
-			name = resizingImages;
+			name = "Icons for IOS";
 			productName = resizingImages;
-			productReference = 2922EEBC1F6B1461002E2EC1 /* resizingImages.app */;
+			productReference = 2922EEBC1F6B1461002E2EC1 /* Icons for IOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2922EEB71F6B1461002E2EC1 /* Build configuration list for PBXProject "resizingImages" */;
+			buildConfigurationList = 2922EEB71F6B1461002E2EC1 /* Build configuration list for PBXProject "Icons for IOS" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2922EEBB1F6B1461002E2EC1 /* resizingImages */,
+				2922EEBB1F6B1461002E2EC1 /* Icons for IOS */,
 			);
 		};
 /* End PBXProject section */
@@ -384,7 +384,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2922EEB71F6B1461002E2EC1 /* Build configuration list for PBXProject "resizingImages" */ = {
+		2922EEB71F6B1461002E2EC1 /* Build configuration list for PBXProject "Icons for IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2922EECC1F6B1461002E2EC1 /* Debug */,
@@ -393,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2922EECE1F6B1461002E2EC1 /* Build configuration list for PBXNativeTarget "resizingImages" */ = {
+		2922EECE1F6B1461002E2EC1 /* Build configuration list for PBXNativeTarget "Icons for IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2922EECF1F6B1461002E2EC1 /* Debug */,

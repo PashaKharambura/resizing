@@ -4,19 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>resizingImages.xcscheme</key>
+		<key>resizingImages 2.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>2922EEBB1F6B1461002E2EC1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
