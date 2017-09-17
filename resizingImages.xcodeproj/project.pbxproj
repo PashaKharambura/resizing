@@ -13,7 +13,6 @@
 		2922EEC71F6B1461002E2EC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2922EEC61F6B1461002E2EC1 /* Assets.xcassets */; };
 		2922EECA1F6B1461002E2EC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2922EEC81F6B1461002E2EC1 /* LaunchScreen.storyboard */; };
 		29275C041F6C2F12005EDC48 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29275C031F6C2F12005EDC48 /* Helper.swift */; };
-		2AAA52ACB318410F237845F8 /* Pods_resizingImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1036BA2BCE934D3A33F67DA7 /* Pods_resizingImages.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AAA52ACB318410F237845F8 /* Pods_resizingImages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
