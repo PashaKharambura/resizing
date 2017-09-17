@@ -7,6 +7,4 @@ target 'resizingImages' do
 
   # Pods for resizingImages
 
-pod 'ZIPFoundation', '~> 0.9'
-
 end
