@@ -9,8 +9,9 @@
 
 import UIKit
 import MessageUI
+import GoogleMobileAds
 
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cropButton: UIButton!
@@ -19,7 +20,11 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     @IBOutlet weak var openLibtraryButton: UIButton!
     @IBOutlet weak var libraryDone: UIImageView!
     @IBOutlet weak var croppingDone: UIImageView!
+    @IBOutlet weak var adBanner: UIView!
     
+    var bannerView: GADBannerView!
+    var interstitial: GADInterstitial!
+
     var newImages = [UIImage]()
     var dataImages = [Data]()
     var counter = 1
@@ -27,6 +32,22 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // звичайний банер
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeFullBanner)
+        self.view.addSubview(bannerView)
+        bannerView.adUnitID = "ca-app-pub-2747619443241513/6366999120"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+
+        // Рекламка на всю сторінку
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-2747619443241513/7806582614")
+        let request = GADRequest()
+        interstitial.load(request)
+        
         
         libraryDone.alpha = 0
         croppingDone.alpha = 0
@@ -139,7 +160,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         }
         return mailComposerVC
     }
-        
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
@@ -152,7 +172,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         emailTextField.text = ""
         dataImages = []
         newImages = []
-        
+        // ad
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+        }
     }
     
     @IBAction func sendEmail(_ sender: Any) {
@@ -213,7 +238,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
             self.cropButton.isEnabled = false
             self.croppingDone.alpha = 1
         }
-        
     }
     
     // MARK: Open Pgoto Library
@@ -234,7 +258,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         dismiss(animated:true, completion: nil)
         cropButton.isEnabled = true
         libraryDone.alpha = 1
-   
     }
    
     // MARK: Move View
@@ -254,5 +277,4 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
             }
         }
     }
-    
 }
