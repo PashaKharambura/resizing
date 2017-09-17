@@ -28,7 +28,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         
         self.emailTextField.delegate = self
         sendButton.isEnabled = false
+        sendButton.backgroundColor = UIColor.gray
         cropButton.isEnabled = false
+        cropButton.backgroundColor = UIColor.gray
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -45,6 +47,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     func perfornAction() {
         if emailTextField.text != "" {
             sendButton.isEnabled = true
+            sendButton.backgroundColor = UIColor.purple
         }
     }
     
@@ -132,6 +135,13 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+        self.imageView.image = nil
+        sendButton.isEnabled = false
+        sendButton.backgroundColor = UIColor.gray
+        cropButton.isEnabled = false
+        cropButton.backgroundColor = UIColor.gray
+        emailTextField.text = ""
+        
     }
     
     @IBAction func sendEmail(_ sender: Any) {
@@ -152,6 +162,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     }
     
     @IBAction func cropAction(_ sender: Any) {
+        SwiftSpinner.show("Making Icons")
         /// 20
         croppingImages(image: imageView.image!, width: 20, height: 20)
         croppingImages(image: imageView.image!, width: 40, height: 40)
@@ -183,7 +194,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         croppingImages(image: imageView.image!, width: 100, height: 100)
         /// 83.5 @2x
         croppingImages(image: imageView.image!, width: 167, height: 167)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            SwiftSpinner.hide()
+        }
     }
     
     // MARK: Open Pgoto Library
@@ -203,6 +216,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         self.imageView.image = image
         dismiss(animated:true, completion: nil)
         cropButton.isEnabled = true
+        cropButton.backgroundColor = UIColor.red
     }
    
     // MARK: Move View
