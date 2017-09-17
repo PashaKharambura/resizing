@@ -17,6 +17,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var openLibtraryButton: UIButton!
+    @IBOutlet weak var libraryDone: UIImageView!
+    @IBOutlet weak var croppingDone: UIImageView!
     
     var newImages = [UIImage]()
     var dataImages = [Data]()
@@ -26,11 +28,17 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.emailTextField.delegate = self
+        libraryDone.alpha = 0
+        croppingDone.alpha = 0
+        
+        emailTextField.delegate = self
+        
+        sendButton.layer.cornerRadius = 25
+        cropButton.layer.cornerRadius = 20
+        openLibtraryButton.layer.cornerRadius = 20
+    
         sendButton.isEnabled = false
-        sendButton.backgroundColor = UIColor.gray
         cropButton.isEnabled = false
-        cropButton.backgroundColor = UIColor.gray
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -45,9 +53,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     }
     
     func perfornAction() {
-        if emailTextField.text != "" {
+        if emailTextField.text != "" && imageView.image != nil {
             sendButton.isEnabled = true
-            sendButton.backgroundColor = UIColor.purple
         }
     }
     
@@ -58,13 +65,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         mailComposerVC.mailComposeDelegate = self
         let email = self.emailTextField.text
         mailComposerVC.setToRecipients([email!])
-        mailComposerVC.setSubject("image")
-        mailComposerVC.setMessageBody("body", isHTML: false)
-        
+        mailComposerVC.setSubject("Icons For IOS App")        
         for image in newImages {
             dataImages.append(UIImagePNGRepresentation(image)!)
         }
-        
         for data in dataImages {
           
             let dataAmount = dataImages.count
@@ -125,8 +129,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
                 if counter == 3 {
                     counter = 1
                 }
-            } else if dataNumber > 21 && dataNumber <= dataAmount {
+            } else if dataNumber > 21 && dataNumber <= 22 {
                 mailComposerVC.addAttachmentData(data, mimeType: "Icon/png", fileName: "App-Icon-83.5x83.5@2x.png")
+                counter = counter + 1
+                dataNumber = dataNumber + 1
+            } else if dataNumber > 22 && dataNumber <= dataAmount {
+                mailComposerVC.addAttachmentData(data, mimeType: "Icon/png", fileName: "AppIcon-1024.png")
             }
         }
         return mailComposerVC
@@ -135,12 +143,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
-        self.imageView.image = nil
+        
+        imageView.image = nil
         sendButton.isEnabled = false
-        sendButton.backgroundColor = UIColor.gray
         cropButton.isEnabled = false
-        cropButton.backgroundColor = UIColor.gray
+        croppingDone.alpha = 0
+        libraryDone.alpha = 0
         emailTextField.text = ""
+        dataImages = []
+        newImages = []
         
     }
     
@@ -164,39 +175,45 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     @IBAction func cropAction(_ sender: Any) {
         SwiftSpinner.show("Making Icons")
         /// 20
+        croppingImages(image: imageView.image!, width: 10, height: 10)
+        croppingImages(image: imageView.image!, width: 20, height: 20)
+        croppingImages(image: imageView.image!, width: 30, height: 30)
+        /// 29
+        croppingImages(image: imageView.image!, width: 14.5, height: 14.5)
+        croppingImages(image: imageView.image!, width: 29, height: 29)
+        croppingImages(image: imageView.image!, width: 43.5, height: 43.5)
+        /// 40
         croppingImages(image: imageView.image!, width: 20, height: 20)
         croppingImages(image: imageView.image!, width: 40, height: 40)
         croppingImages(image: imageView.image!, width: 60, height: 60)
-        /// 29
-        croppingImages(image: imageView.image!, width: 29, height: 29)
-        croppingImages(image: imageView.image!, width: 58, height: 58)
-        croppingImages(image: imageView.image!, width: 87, height: 87)
-        /// 40
-        croppingImages(image: imageView.image!, width: 40, height: 40)
-        croppingImages(image: imageView.image!, width: 80, height: 80)
-        croppingImages(image: imageView.image!, width: 120, height: 120)
         /// 60
+        croppingImages(image: imageView.image!, width: 30, height: 30)
         croppingImages(image: imageView.image!, width: 60, height: 60)
-        croppingImages(image: imageView.image!, width: 120, height: 120)
-        croppingImages(image: imageView.image!, width: 180, height: 180)
+        croppingImages(image: imageView.image!, width: 90, height: 90)
         /// 76
+        croppingImages(image: imageView.image!, width: 38, height: 38)
         croppingImages(image: imageView.image!, width: 76, height: 76)
-        croppingImages(image: imageView.image!, width: 152, height: 152)
-        croppingImages(image: imageView.image!, width: 228, height: 228)
-        /// 57
-        croppingImages(image: imageView.image!, width: 57, height: 57)
         croppingImages(image: imageView.image!, width: 114, height: 114)
+        /// 57
+        croppingImages(image: imageView.image!, width: 28.5, height: 28.5)
+        croppingImages(image: imageView.image!, width: 57, height: 57)
         /// 72
+        croppingImages(image: imageView.image!, width: 36, height: 36)
         croppingImages(image: imageView.image!, width: 72, height: 72)
-        croppingImages(image: imageView.image!, width: 144, height: 144)
         /// small 50
+        croppingImages(image: imageView.image!, width: 25, height: 25)
         croppingImages(image: imageView.image!, width: 50, height: 50)
-        croppingImages(image: imageView.image!, width: 100, height: 100)
         /// 83.5 @2x
-        croppingImages(image: imageView.image!, width: 167, height: 167)
+        croppingImages(image: imageView.image!, width: 83.5, height: 83.5)
+        /// 1024
+        croppingImages(image: imageView.image!, width: 512, height: 512)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             SwiftSpinner.hide()
+            self.cropButton.isEnabled = false
+            self.croppingDone.alpha = 1
         }
+        
     }
     
     // MARK: Open Pgoto Library
@@ -216,14 +233,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
         self.imageView.image = image
         dismiss(animated:true, completion: nil)
         cropButton.isEnabled = true
-        cropButton.backgroundColor = UIColor.red
+        libraryDone.alpha = 1
+   
     }
    
     // MARK: Move View
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
+            if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
             }
         }
@@ -231,7 +249,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UII
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
+            if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
             }
         }
